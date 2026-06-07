@@ -1,0 +1,27 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: alert-dispatcher
+  kafka:
+    bootstrap-servers: localhost:9092
+  mail:
+    host: smtp.company.com
+    port: 587
+    username: fraud-alert@company.com
+    password: ${SMTP_PASSWORD}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+
+alerts:
+  enabled: true
+  recipients:
+    email: fraud-team@company.com

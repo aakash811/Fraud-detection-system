@@ -1,0 +1,37 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+metadata:
+  name: fraud-detection-dashboard
+spec:
+  name: fraud-detection-dashboard.json
+  json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "Fraud Detection System",
+        "tags": ["fraud", "payments", "monitoring"],
+        "timezone": "browser",
+        "panels": [
+          {
+            "type": "graph",
+            "title": "Transaction Volume",
+            "targets": [{"expr": "rate(fraud_transactions_total[5m]", "legendFormat": "transactions"}]
+          },
+          {
+            "type": "graph",
+            "title": "Blocked Transactions",
+            "targets": [{"expr": "rate(fraud_transactions_blocked_total[5m]", "legendFormat": "blocked"}]
+          },
+          {
+            "type": "graph",
+            "title": "Redis Connection Status",
+            "targets": [{"expr": "redis_connected", "legendFormat": "connected"}]
+          },
+          {
+            "type": "graph",
+            "title": "Kafka Consumer Lag",
+            "targets": [{"expr": "kafka_consumer_group_lag", "legendFormat": "lag"}]
+          }
+        ]
+      }
+    }

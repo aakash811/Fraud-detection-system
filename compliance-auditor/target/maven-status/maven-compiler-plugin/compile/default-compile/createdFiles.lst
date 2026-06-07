@@ -1,0 +1,10 @@
+com\frauddetection\auditor\entity\DecisionLog$DecisionLogBuilder.class
+com\frauddetection\auditor\ComplianceAuditorApplication.class
+com\frauddetection\auditor\repository\DecisionLogRepository.class
+com\frauddetection\auditor\consumer\AuditConsumer.class
+com\frauddetection\auditor\entity\TransactionLog$TransactionLogBuilder.class
+com\frauddetection\auditor\repository\TransactionLogRepository.class
+com\frauddetection\auditor\config\KafkaConfig.class
+com\frauddetection\auditor\entity\TransactionLog.class
+com\frauddetection\auditor\entity\DecisionLog.class
+com\frauddetection\auditor\service\AuditService.class

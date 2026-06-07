@@ -1,0 +1,43 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: fraud-detection-monitor
+spec:
+  selector:
+    matchLabels:
+      app: fraud-analyzer
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+data:
+  fraud-alerts.yml: |
+    groups:
+    - name: fraud.alerts
+      rules:
+      - alert: HighFraudRate
+        expr: rate(fraud_transactions_blocked_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High fraud transaction rate detected"
+      - alert: RedisConnectionFailed
+        expr: redis_connected == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis connection failed"
+      - alert: KafkaConsumerLag
+        expr: kafka_consumer_group_lag > 1000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Kafka consumer lag detected"

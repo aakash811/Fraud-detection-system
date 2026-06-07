@@ -1,0 +1,20 @@
+# Production environment overlay
+replicaCount: 3
+image:
+  tag: "stable"
+resources:
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 15
+env:
+- name: SPRING_PROFILES_ACTIVE
+  value: "prod"
+- name: LOG_LEVEL
+  value: "INFO"

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-dispatcher
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: alert-dispatcher
+  template:
+    metadata:
+      labels:
+        app: alert-dispatcher
+    spec:
+      containers:
+      - name: alert-dispatcher
+        image: frauddetection/alert-dispatcher:latest
+        ports:
+        - containerPort: 8084
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka:9092"
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8084
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8084
+          initialDelaySeconds: 10
+          periodSeconds: 5

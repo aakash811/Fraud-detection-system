@@ -1,0 +1,40 @@
+{{/*
+Template for Alert Dispatcher Deployment
+*/}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-dispatcher
+  labels:
+    {{- include "fraud-detection.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: alert-dispatcher
+  template:
+    metadata:
+      labels:
+        app: alert-dispatcher
+    spec:
+      containers:
+      - name: alert-dispatcher
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.alertDispatcher.containerPort | default 8084 }}
+        env:
+        {{- range .Values.env }}
+        - name: {{ .name }}
+          value: "{{ .value }}"
+        {{- end }}
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        {{- if .Values.livenessProbe.enabled }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.livenessProbe.path }}
+            port: {{ .Values.alertDispatcher.containerPort | default 8084 }}
+          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+        {{- end }}

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-orchestrator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: risk-orchestrator
+  template:
+    metadata:
+      labels:
+        app: risk-orchestrator
+    spec:
+      containers:
+      - name: risk-orchestrator
+        image: frauddetection/risk-orchestrator:latest
+        ports:
+        - containerPort: 8083
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka:9092"
+        - name: SPRING_DATA_REDIS_HOST
+          value: "redis"
+        - name: SPRING_DATA_REDIS_PORT
+          value: "6379"
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8083
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8083
+          initialDelaySeconds: 10
+          periodSeconds: 5

@@ -1,0 +1,11 @@
+com\frauddetection\analyzer\engine\DetectionEngineTest$1.class
+com\frauddetection\analyzer\rules\VelocityRuleTest.class
+com\frauddetection\analyzer\engine\DetectionEngineTest.class
+com\frauddetection\analyzer\DetectionEngineConcurrencyTest.class
+com\frauddetection\analyzer\rules\DeviceFingerprintRuleTest.class
+com\frauddetection\analyzer\rules\BlacklistRuleTest.class
+com\frauddetection\analyzer\rules\IpVelocityRuleTest.class
+com\frauddetection\analyzer\rules\AmountAnomalyRuleTest.class
+com\frauddetection\analyzer\rules\MerchantPatternRuleTest.class
+com\frauddetection\analyzer\rules\GeolocationRuleTest.class
+com\frauddetection\analyzer\rules\TimeBasedRuleTest.class

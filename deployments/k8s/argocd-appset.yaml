@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: fraud-detection-environments
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: dev-cluster
+        server: https://kubernetes.default.svc
+        namespace: fraud-detection-dev
+        url: https://fraud-detection-dev.example.com
+      - cluster: prod-cluster
+        server: https://kubernetes.default.svc
+        namespace: fraud-detection-prod
+        url: https://fraud-detection.example.com
+  template:
+    metadata:
+      name: 'fraud-detection-{{cluster}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/org/fraud-detection-system.git'
+        targetRevision: main
+        path: deployments/k8s/overlays/{{cluster}}
+      destination:
+        server: '{{server}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

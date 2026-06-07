@@ -1,0 +1,6 @@
+com\frauddetection\alert\consumer\DecisionConsumer.class
+com\frauddetection\alert\service\NotificationService.class
+com\frauddetection\alert\template\EmailTemplate.class
+com\frauddetection\alert\AlertDispatcherApplication.class
+com\frauddetection\alert\config\KafkaConfig.class
+com\frauddetection\alert\producer\AlertProducer.class

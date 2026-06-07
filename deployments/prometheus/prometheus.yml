@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'payment-ingestor'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+  
+  - job_name: 'fraud-analyzer'
+    static_configs:
+      - targets: ['host.docker.internal:8081']
+  
+  - job_name: 'compliance-auditor'
+    static_configs:
+      - targets: ['host.docker.internal:8082']
+  
+  - job_name: 'risk-orchestrator'
+    static_configs:
+      - targets: ['host.docker.internal:8083']

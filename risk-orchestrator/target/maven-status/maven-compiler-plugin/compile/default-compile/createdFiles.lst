@@ -1,0 +1,12 @@
+com\frauddetection\orchestrator\controller\RiskController.class
+com\frauddetection\orchestrator\config\KafkaConfig.class
+com\frauddetection\orchestrator\consumer\DecisionConsumer.class
+com\frauddetection\orchestrator\controller\StatDto.class
+com\frauddetection\orchestrator\controller\StatusUpdateRequest.class
+com\frauddetection\orchestrator\model\RuleConfiguration.class
+com\frauddetection\orchestrator\config\RedisConfig.class
+com\frauddetection\orchestrator\controller\InvestigationDto.class
+com\frauddetection\orchestrator\RiskOrchestratorApplication.class
+com\frauddetection\orchestrator\service\RiskService.class
+com\frauddetection\orchestrator\service\RiskService$DecisionResponse.class
+com\frauddetection\orchestrator\model\RuleConfiguration$Thresholds.class

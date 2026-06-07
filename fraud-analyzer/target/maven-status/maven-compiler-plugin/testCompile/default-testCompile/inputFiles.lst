@@ -1,0 +1,12 @@
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\DetectionEngineConcurrencyTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\engine\DetectionEngineTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\AmountAnomalyRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\BlacklistRuleEdgeCaseTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\BlacklistRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\DeviceFingerprintRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\GeolocationRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\IpVelocityRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\MerchantPatternRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\TimeBasedRuleTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\VelocityRuleEdgeCaseTest.java
+C:\Users\Aakash Borse\fraud-detection-system\fraud-analyzer\src\test\java\com\frauddetection\analyzer\rules\VelocityRuleTest.java

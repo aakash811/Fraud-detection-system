@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init-script
+data:
+  init.sql: |
+    CREATE TABLE IF NOT EXISTS decision_log (
+        id UUID PRIMARY KEY,
+        card_last4 VARCHAR(4),
+        ip_address VARCHAR(45),
+        decision VARCHAR(10),
+        score DECIMAL(5,4),
+        reason TEXT,
+        correlation_id UUID,
+        investigation_status VARCHAR(20) DEFAULT 'PENDING',
+        investigator_notes TEXT,
+        created_at TIMESTAMP DEFAULT NOW()
+    );
+    
+    CREATE INDEX idx_decision_log_card ON decision_log(card_last4);
+    CREATE INDEX idx_decision_log_correlation ON decision_log(correlation_id);
+    CREATE INDEX idx_decision_log_status ON decision_log(investigation_status);
+    CREATE INDEX idx_decision_log_created ON decision_log(created_at DESC);

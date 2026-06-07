@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fraud-detection-system
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/${USER}/${REPO}.git'
+    targetRevision: main
+    path: deployments/k8s/base
+    plugin:
+      name: kustomize
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: fraud-detection
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas

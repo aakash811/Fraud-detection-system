@@ -1,0 +1,29 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: compliance-auditor
+  datasource:
+    url: ${AUDIT_DB_URL:jdbc:postgresql://localhost:5433/fraud_audit}
+    username: ${AUDIT_DB_USERNAME:fraud_user}
+    password: ${AUDIT_DB_PASSWORD:fraud_pass}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  kafka:
+    bootstrap-servers: localhost:9092
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always

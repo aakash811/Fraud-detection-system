@@ -1,0 +1,6 @@
+C:\Users\Aakash Borse\fraud-detection-system\alert-dispatcher\src\main\java\com\frauddetection\alert\AlertDispatcherApplication.java
+C:\Users\Aakash Borse\fraud-detection-system\alert-dispatcher\src\main\java\com\frauddetection\alert\config\KafkaConfig.java
+C:\Users\Aakash Borse\fraud-detection-system\alert-dispatcher\src\main\java\com\frauddetection\alert\consumer\DecisionConsumer.java
+C:\Users\Aakash Borse\fraud-detection-system\alert-dispatcher\src\main\java\com\frauddetection\alert\producer\AlertProducer.java
+C:\Users\Aakash Borse\fraud-detection-system\alert-dispatcher\src\main\java\com\frauddetection\alert\service\NotificationService.java
+C:\Users\Aakash Borse\fraud-detection-system\alert-dispatcher\src\main\java\com\frauddetection\alert\template\EmailTemplate.java
